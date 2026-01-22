@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,4 +48,10 @@ Route::match(['get','post'], '/hi', function(){
 
 Route::any("/any", function(){
     return "Hello any";
+});
+
+Route::get("/sum", function(Request $request){
+    $a = (int) $request->query('a', 0);
+    $b = (int) $request->query('b', 0);
+    return "sum of a and b : " . ($a + $b);
 });
