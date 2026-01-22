@@ -24,3 +24,19 @@ Route::get("/hello", function(){
 Route::post("/hello", function(){
     return "Hello Post";
 });
+
+Route::put("/hello", function(){
+    return "Hello Put";
+});
+
+Route::patch("/hello", function(){
+    return "Hello Patch";
+});
+
+Route::delete('/hello', function () {
+    return "Hello Delete";
+});
+
+Route::options("/hello", function(){
+    return "Hello Options";
+});
