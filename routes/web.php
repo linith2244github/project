@@ -42,16 +42,24 @@ Route::options("/hello", function(){
     return "Hello Options";
 });
 
+Route::get("/sum", function(Request $request){
+    $a = (int) $request->query('a', 0);
+    $b = (int) $request->query('b', 0);
+    return "sum of a and b : " . ($a + $b);
+});
+
+Route::get("/say-greeting", function(){
+    return view("say-greeting");
+});
+
+Route::post("/say-greeting", function(Request $request){
+    return "Received Message: " . $request->input("message");
+});
+
 Route::match(['get','post'], '/hi', function(){
     return 'Hello get and post';
 });
 
 Route::any("/any", function(){
     return "Hello any";
-});
-
-Route::get("/sum", function(Request $request){
-    $a = (int) $request->query('a', 0);
-    $b = (int) $request->query('b', 0);
-    return "sum of a and b : " . ($a + $b);
 });
