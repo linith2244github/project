@@ -40,3 +40,11 @@ Route::delete('/hello', function () {
 Route::options("/hello", function(){
     return "Hello Options";
 });
+
+Route::match(['get','post'], '/hi', function(){
+    return 'Hello get and post';
+});
+
+Route::any("/any", function(){
+    return "Hello any";
+});
