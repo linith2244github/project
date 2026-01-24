@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h3>Create Product</h3>
-        <form action="product/store" class="p-5 shadow-none" method="POST">
+        <form action="{{ route('store') }}" class="p-5 shadow-none" method="POST">
             @csrf
             <div class="from-group mb-3">
                 <label for="name">Product Name : </label>
@@ -30,7 +30,7 @@
             </div>
 
             <button class="btn btn-sm btn-success" type="submit">Save</button>
-            <a href="" class="btn btn-sm btn-danger">Back</a>
+            <a href="{{ route('read') }}" class="btn btn-sm btn-danger">Back</a>
         </form>
     </div>
 </body>

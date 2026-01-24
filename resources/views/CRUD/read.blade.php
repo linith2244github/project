@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h2>Product List</h2>
-        <a href="product/create" class="btn btn-sm btn-primary">Add More</a>
+        <a href="{{ route("create") }}" class="btn btn-sm btn-primary">Add More</a>
         <table class="table table-bordered table-hover text-center mt-3">
             <thead class="table-dark">
                 <tr>
@@ -23,15 +23,29 @@
                 </tr>
             </thead>
             <tbody>
-                <td>P001</td>
-                <td>image.jpg</td>
-                <td>I Phone 17 Pro Max</td>
-                <td>$1</td>
-                <td>10</td>
-                <td>
-                    <button class="btn btn-sm btn-danger" type="submit">Remove</button>
-                    <a href="" class="btn btn-sm btn-primary">Edit</a>
-                </td>
+                @foreach ($products as $product)
+                    <tr>
+                        <td>{{ $product->id }}</td>
+                        <td>{{ $product->image }}</td>
+                        <td>{{  $product->product_name }}</td>
+                        <td>{{"$ ". $product->price }}</td>
+                        <td>{{ number_format($product->quantity, 2) }}</td>
+                        <td>
+                            {{-- <form action="{{ route('destroy', $product->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Remove</button>
+                            </form> --}}
+                            <a href="{{ route("destroy", $product->id) }}" class="btn btn-sm btn-danger">Remove</a>
+                            {{-- <a href="{{ url('product/destroy/'.$product->id) }}"
+                                onclick="return confirm('Are you sure?')"
+                                class="btn btn-danger btn-sm">
+                                Remove
+                            </a> --}}
+                            <a href="{{ route('edit', $product->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -28,6 +28,10 @@ Route::get('test2', [TestController::class,'test2']);
 Route::get('student', [TestController::class,'student']);
 Route::post("studentStore", [TestController::class,"studentStore"]);
 
-Route::get("product", [PhoneProductController::class, "read"]);
-Route::get("product/create", [PhoneProductController::class,"create"]);
-Route::post("product/store", [PhoneProductController::class, "store"]);
+Route::get("product", [PhoneProductController::class, "read"])->name("read");
+Route::get("product/create", [PhoneProductController::class,"create"])->name("create");
+Route::post("product/store", [PhoneProductController::class, "store"])->name("store");
+// Route::delete("product/destroy/{id}", [PhoneProductController::class, "destroy"])->name("destroy");
+Route::get('product/destroy/{id}', [PhoneProductController::class, 'destroy'])->name('destroy');
+Route::get("product/edit/{id}", [PhoneProductController::class, "edit"])->name("edit");
+Route::post("product/update/{id}", [PhoneProductController::class, "update"])->name("update");
