@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhoneProductController;
 use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,7 @@ Route::get('test', [TestController::class,'test']);
 Route::get('test2', [TestController::class,'test2']);
 Route::get('student', [TestController::class,'student']);
 Route::post("studentStore", [TestController::class,"studentStore"]);
+
+Route::get("product", [PhoneProductController::class, "read"]);
+Route::get("product/create", [PhoneProductController::class,"create"]);
+Route::post("product/store", [PhoneProductController::class, "store"]);
