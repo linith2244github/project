@@ -15,7 +15,7 @@
     <div class="container my-3">
         <div class="d-flex justify-content-between align-items-center">
             <h3>Student List</h3>
-            <button class="btn btn-sm btn-success">Add more</button>
+            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add more</button>
         </div>
         <table class="table table-bordered">
             <thead class="table-dark">
@@ -41,6 +41,8 @@
             </tbody>
         </table>
     </div>
+
+    @include("students.modals.create")
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -50,6 +52,26 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    const saveStudent = () => {
+        let data = new FormData($("#formCreate")[0]);
+        let students = {
+            name : data.get('name'),
+            gender : data.get('gender'),
+            course : data.get('course')
+        }
+        console.log(students);
+        
+        $.ajax({
+            type: "POST",
+            url: "url",
+            data: "data",
+            dataType: "dataType",
+            success: function (response) {
+                
+            }
+        });
+    }
 </script>
 </body>
 </html>
