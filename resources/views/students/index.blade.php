@@ -55,20 +55,32 @@
 
     const saveStudent = () => {
         let data = new FormData($("#formCreate")[0]);
-        let students = {
-            name : data.get('name'),
-            gender : data.get('gender'),
-            course : data.get('course')
-        }
-        console.log(students);
+        // let students = {
+        //     name : data.get('name'),
+        //     gender : data.get('gender'),
+        //     course : data.get('course'),
+        //     image : data.get('profile')
+        // }
+        // console.log(students);
         
         $.ajax({
             type: "POST",
-            url: "url",
-            data: "data",
-            dataType: "dataType",
+            url: "{{ route('student.store') }}",
+            data: data,
+            dataType: "json",
+            contentType: false,
+            processData: false,
             success: function (response) {
-                
+                if(response.status == true){
+
+                }else{
+                    $('input').removeClass('is-invalid');
+                    $('p').removeClass('text-danger').text('');
+                    let errors = response.errors;
+                    $.each(errors, function (key, value) { 
+                         $(`#${key}`).addClass('is-invalid').siblings('p').addClass('text-danger').text(value);
+                    });
+                }
             }
         });
     }

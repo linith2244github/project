@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('show', [TestController::class,'show']);
 Route::get('show1', [TestController::class,'show1']);
@@ -37,4 +37,5 @@ Route::get('product/destroy/{id}', [PhoneProductController::class, 'destroy'])->
 Route::get("product/edit/{id}", [PhoneProductController::class, "edit"])->name("edit");
 Route::post("product/update/{id}", [PhoneProductController::class, "update"])->name("update");
 
-Route::get("student", [StudentController::class, "index"])->name("student.index");
+Route::get("/", [StudentController::class, "index"])->name("student.index");
+Route::post("/store", [StudentController::class,"store"])->name("student.store");

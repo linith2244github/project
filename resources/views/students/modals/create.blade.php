@@ -11,6 +11,7 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Student Name</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Please enter your name">
+                <p></p>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="gender">Student Gender</label>
@@ -22,6 +23,7 @@
             <div class="mb-3">
                 <label for="course" class="form-label">Course</label>
                 <input type="text" class="form-control" id="course" name="course" placeholder="Please enter your course">
+                <p></p>
             </div>
             <div class="mb-3">
                 <label for="profile" class="form-label">Profile</label>
